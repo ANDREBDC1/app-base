@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "baseExpo",
+    "slug": "baseExpo",
+    "version": "1.0.0",
+    "plugins": [],
+    "android": {
+      "package": "com.anonymous.baseExpo"
+    }
+  }
+}
