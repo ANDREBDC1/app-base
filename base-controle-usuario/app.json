@@ -3,7 +3,9 @@
     "name": "baseExpo",
     "slug": "baseExpo",
     "version": "1.0.0",
-    "plugins": [],
+    "plugins": [
+      "expo-secure-store"
+    ],
     "android": {
       "package": "com.anonymous.baseExpo"
     }

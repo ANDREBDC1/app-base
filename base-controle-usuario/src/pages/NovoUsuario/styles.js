@@ -6,6 +6,15 @@ background-color:#0a0347;
 justify-content: center;
 align-items: center;
 `
+
+export const Titulo = styled.Text`
+margin-bottom: 20px;
+font-size: 35px;
+font-style:italic;
+color: #ffffff;
+font-weight:bold ;
+`
+
 export const Input = styled.TextInput.attrs({
     placeholderTextColor: '#9c9999'
 })`

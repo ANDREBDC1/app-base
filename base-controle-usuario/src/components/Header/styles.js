@@ -10,10 +10,3 @@ border-bottom-width: 1px;
 padding-top: 10px;
 
 `
-
-export const Title = styled.Text`
-font-size: 27px;
-color: #fff;
-font-weight: bold;
-padding-bottom: 15px;
-`

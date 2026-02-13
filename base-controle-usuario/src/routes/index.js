@@ -7,21 +7,9 @@ import AuthRoutes from './auth.routes';
 
 export default function Routes() {
 
-    const {singned, loading} = useContext(AuthContext);
+    const { singned } = useContext(AuthContext);
 
-    if (loading) {
-        return (
-            <View style={{ 
-                flex: 1, 
-                alignContent: 'center', 
-                justifyContent: 'center', 
-                opacity: 0 
-            }}>
-                <ActivityIndicator size={50} color="#e52246" />
-                
-            </View>
-        );
-    }
+    return <AppRoutes />;
 
     return (
         singned ? <AppRoutes /> : <AuthRoutes />

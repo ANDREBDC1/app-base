@@ -4,16 +4,14 @@ import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from '../../contexts/auth';
 
 import {
-  Backgroud,
   Container,
-  Titulo,
   AreaInput,
   Input,
   SubimitButton,
   SubimitText,
-  Link,
-  LinkText
 } from './styles'
+
+import Titulo from '../../components/Titulo';
 
 export default function Login() {
 
@@ -51,33 +49,14 @@ export default function Login() {
     await signIn(email, password)
 
   }
-
-
-  async function handleSignUp() {
-
-
-    if (!email || !password || !nome) {
-      Alert.alert("Prenecha todo os campo")
-      return;
-    }
-
-    await signUp(nome, email, password)
-
-  }
-
-
-  if (login) {
-    return (
+  return (
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
 
         <Container>
-          <Titulo>
-            Dev
-            <Text style={{ color: "#e52246" }}>Post</Text>
-          </Titulo>
+          <Titulo/>
           <AreaInput>
             <Input
               keyboardType='email-address'
@@ -104,69 +83,9 @@ export default function Login() {
               ? <ActivityIndicator size={30} color="#fff" />
               : <SubimitText>Acessar</SubimitText>}
           </SubimitButton>
-          <Link onPress={() => setLogin(false)}>
-            <LinkText>Criar uma conta!</LinkText>
-          </Link>
-
+          
         </Container>
       </KeyboardAvoidingView>
     );
-  }
-
-
-  return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
-
-      <Container>
-        <Titulo>
-          Dev
-          <Text style={{ color: "#e52246" }}>Post</Text>
-        </Titulo>
-        <AreaInput>
-          <Input
-            keyboardType=''
-            placeholder='Nome'
-            autoCorrect={false}
-            autoCapitalize='none'
-            onChangeText={(text) => setNome(text)}
-            value={nome}
-          />
-        </AreaInput>
-        <AreaInput>
-          <Input
-            keyboardType='email-address'
-            style={{ width: "90%" }}
-            placeholder='Email'
-            autoCorrect={false}
-            autoCapitalize='none'
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-          />
-        </AreaInput>
-        <AreaInput>
-          <Input
-            style={{ width: "90%" }}
-            placeholder='Senha'
-            autoCorrect={false}
-            autoCapitalize='none'
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-            secureTextEntry={true}
-          />
-        </AreaInput>
-        <SubimitButton onPress={handleSignUp}>
-          {loadingAuth
-            ? <ActivityIndicator size={30} color="#fff" />
-            : <SubimitText>Cadastrar</SubimitText>}
-        </SubimitButton>
-        <Link onPress={() => setLogin(true)}>
-          <LinkText>Já tenho uma conta</LinkText>
-        </Link>
-
-      </Container>
-    </KeyboardAvoidingView>
-  )
+  
 }
