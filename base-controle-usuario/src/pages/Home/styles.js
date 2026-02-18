@@ -16,7 +16,7 @@ export const ButtonPost = styled.TouchableOpacity`
  bottom: 6%;
 `;
 
-export const ListPost = styled.FlatList`
+export const ListUser = styled.FlatList`
 flex: 1;
 background-color: #f1f1f1;
 `;

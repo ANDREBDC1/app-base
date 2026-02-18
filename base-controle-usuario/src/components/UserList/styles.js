@@ -14,3 +14,8 @@ color: #fff;
 font-size: 17px;
 font-weight: bold;
 `;
+export const Email = styled.Text`
+color: #fff;
+font-size: 14px;
+font-weight: normal;
+`;

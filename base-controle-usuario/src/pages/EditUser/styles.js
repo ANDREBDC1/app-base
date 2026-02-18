@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.KeyboardAvoidingView`
 flex: 1;
-background-color:#0a0347;
+background-color: #303031;
 justify-content: center;
 align-items: center;
 `
@@ -24,7 +24,7 @@ font-size: 17px;
 color: #9c9999;
 border-radius: 8px;
 padding: 10px;
-margin-bottom: 15px;
+
 `
 
 export const AreaInput = styled.View`
@@ -37,11 +37,23 @@ align-items: center;
 justify-content: center;
 background-color: #428cfd;
 border-radius: 8px;
+margin-top: 15px;
 `
 
 export const SubimitText = styled.Text`
 font-size: 20px;
 color: #f1f1f1;
 `;
+
+
+export const EditaPasswordButton = styled.TouchableOpacity`
+flex: 0.1;
+height: 50px;
+align-items: center;
+justify-content: center;
+border-radius: 40px;
+margin-right: 8px;
+margin-top: 15px;
+`
 
 
