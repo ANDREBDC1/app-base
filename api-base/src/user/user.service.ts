@@ -1,6 +1,7 @@
 import {
   Injectable,
-  NotFoundException
+  NotFoundException,
+  ConsoleLogger,
 } from '@nestjs/common';
 
 import { InjectRepository } from '@nestjs/typeorm';
@@ -10,6 +11,7 @@ import { User } from './user.entity';
 import { UserDto } from './dto/user.dto';
 import { PermissionsService } from 'src/security/permissions.service';
 import { hash } from '../commun/hashString';
+import { UserUpdateDto } from './dto/userUpdate.dto';
 
 @Injectable()
 export class UsersService {
@@ -17,7 +19,7 @@ export class UsersService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
     private readonly permissionsService: PermissionsService
-  ) {}
+  ) { }
 
   async create(dto: UserDto) {
     const passwordHash = await hash(dto.password);
@@ -28,22 +30,22 @@ export class UsersService {
       password: passwordHash,
     });
 
-    const newUser  = await this.userRepository.save(user)
+    const newUser = await this.userRepository.save(user)
 
-    if(dto.permissions.length > 0){
-        const permisionsDto = dto.permissions.map(permisssao => {
-          permisssao.userId =  newUser.id
-          return permisssao;
-        })
-       await this.permissionsService.create(permisionsDto)
+    if (dto.permissions.length > 0) {
+      const permisionsDto = dto.permissions.map(permisssao => {
+        permisssao.userId = newUser.id
+        return permisssao;
+      })
+      await this.permissionsService.create(permisionsDto)
     }
-  
+
     return newUser;
   }
 
   async findAll(userIdCurrent: string) {
     return await this.userRepository.find({
-      where:{
+      where: {
         isAdmin: false,
         id: Not(userIdCurrent)
       }
@@ -63,7 +65,7 @@ export class UsersService {
     return result;
   }
 
-  async update(id: string, dto: UserDto) {
+  async update(id: string, dto: UserUpdateDto) {
     const user = await this.userRepository.findOne({
       where: { id },
     });
@@ -77,6 +79,15 @@ export class UsersService {
     }
 
     Object.assign(user, dto);
+
+    await this.permissionsService.removeByUserId(id)
+    if (dto.permissions?.length > 0) {
+      const permisionsDto = dto.permissions.map(permisssao => {
+        permisssao.userId = user.id
+        return permisssao;
+      })
+      await this.permissionsService.create(permisionsDto)
+    }
     return await this.userRepository.save(user);
   }
 
@@ -90,6 +101,7 @@ export class UsersService {
     }
 
     await this.userRepository.remove(user);
+    await this.permissionsService.removeByUserId(id)
 
     return { message: 'Usuário removido com sucesso' };
   }

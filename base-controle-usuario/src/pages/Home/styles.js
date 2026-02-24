@@ -20,3 +20,12 @@ export const ListUser = styled.FlatList`
 flex: 1;
 background-color: #f1f1f1;
 `;
+
+export const SearchInput = styled.TextInput`
+  height: 45px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0 12px;
+  margin: 10px 16px;
+  border: 1px solid #ddd;
+`;

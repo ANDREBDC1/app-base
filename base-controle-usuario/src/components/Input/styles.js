@@ -24,4 +24,9 @@ font-size: 18px;
 margin: 0px 4px
 `;
 
-export const IconWrapper = styled.View``
+export const IconWrapper = styled.View`
+border-right-width: 1px;
+border-right-color: #fff;
+padding: 0px 5px;
+margin-right: 5px;
+`

@@ -22,6 +22,7 @@ import  {
   PermissionUserUpdate,
 } from "../security/allPermissions"
 import { CurrentUser } from './current-user.decorator';
+import { UserUpdateDto } from './dto/userUpdate.dto';
 
 @UseGuards(JwtAuthGuard, PermissionsGuard)
 @Controller('users')
@@ -50,8 +51,9 @@ export class UsersController {
   @Permissions(PermissionAdmin, PermissionUserUpdate)
   update(
     @Param('id') id: string,
-    @Body() dto: UserDto,
+    @Body() dto: UserUpdateDto,
   ) {
+
     return this.usersService.update(id, dto);
   }
 

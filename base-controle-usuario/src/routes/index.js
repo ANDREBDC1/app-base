@@ -7,11 +7,11 @@ import AuthRoutes from './auth.routes';
 
 export default function Routes() {
 
-    const { singned } = useContext(AuthContext);
+    const { signed } = useContext(AuthContext);
 
-    return <AppRoutes />;
+    //return <AppRoutes />;
 
     return (
-        singned ? <AppRoutes /> : <AuthRoutes />
+        signed ? <AppRoutes /> : <AuthRoutes />
     );
 }

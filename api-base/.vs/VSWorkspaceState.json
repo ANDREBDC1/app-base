@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\auth",
+    "\\src\\security"
+  ],
+  "SelectedNode": "\\src\\security\\allPermissions.ts",
+  "PreviewInSolutionExplorer": false
+}

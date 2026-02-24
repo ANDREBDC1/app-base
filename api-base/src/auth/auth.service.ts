@@ -7,6 +7,7 @@ import { Repository } from 'typeorm';
 import { User } from '../user/user.entity';
 import { LoginDto } from './login.dto';
 import { compare } from '../commun/hashString';
+import e from 'express';
 
 
 @Injectable()
@@ -42,6 +43,10 @@ export class AuthService {
 
     return {
       access_token: this.jwtService.sign(payload),
+      user: {
+        name: user.name,  
+        email: user.email,
+      },
     };
   }
 }

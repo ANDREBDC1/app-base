@@ -6,7 +6,7 @@ import {
 export default function Titulo() {
     return (
         <Container>
-            Administração <Text style={{ color: "#e52246" }}>Usuário</Text>
+            Admin <Text style={{ color: "#e52246" }}>Usuário</Text>
         </Container>
     );
 }

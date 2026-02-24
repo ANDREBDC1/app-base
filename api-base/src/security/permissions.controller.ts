@@ -6,7 +6,9 @@ import { PermissionDto } from './dto/permisson.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { 
     PermissionAdmin,
-    PermissionUserCreate 
+    PermissionUserCreate,
+    PermissionUserUpdate,
+    PermissionUserList, 
 } from "./allPermissions"
 
 
@@ -17,13 +19,13 @@ export class PermissionsController {
         private readonly permissionsService: PermissionsService
     ) { }
 
-    @Permissions(PermissionAdmin, PermissionUserCreate)
+    @Permissions(PermissionAdmin, PermissionUserCreate, PermissionUserUpdate, PermissionUserList)
     @Get()
     getAll() {
         return this.permissionsService.getPermissons();
     }
 
-    @Permissions(PermissionAdmin)
+    @Permissions(PermissionAdmin, PermissionUserCreate, PermissionUserUpdate, PermissionUserList)
     @Get(":userId")
     get( @Param('userId') userId: string,) {
         return this.permissionsService.get(userId);

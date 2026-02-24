@@ -91,5 +91,7 @@ export class PermissionsService {
         });
     }
 
-
+    async removeByUserId(userId: string) {
+        await this.permissionRepository.delete({ userId });
+    } 
 }

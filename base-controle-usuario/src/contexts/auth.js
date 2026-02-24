@@ -10,15 +10,17 @@ export default function AuthProvider({ children }) {
     const [token, setToken] = useState(null);
     const [loading, setLoading] = useState(true);
     const [loadingAuth, setLoadingAuth] = useState(false);
+    const [user, setUser] = useState(null);
 
     async function signIn(email, password) {
         try {
             setLoadingAuth(true)
-            const token = await login(email, password);
+            const data = await login(email, password);
 
-            if (token) {
-                saveTokens(token.access_token)
-                setToken(token.access_token);
+            if (data && data.access_token) {
+                saveTokens(data.access_token)
+                setToken(data.access_token);
+                setUser(data.user);
             }
 
             setLoadingAuth(false)
@@ -34,17 +36,18 @@ export default function AuthProvider({ children }) {
         }
     }
 
-    async function singOut() {
+    async function signOut() {
         try {
             await clearTokens();
             setToken(null);
+            setUser(null);
         } catch (erro) {
             setToken(null);
         }
     }
 
     return (
-        <AuthContext.Provider value={{ singned: !!token, token: token, loadingAuth, loading, signIn, singOut }}>
+        <AuthContext.Provider value={{ signed: !!token, token: token, loadingAuth, loading, signIn, signOut, user }}>
             {children}
         </AuthContext.Provider>
     )

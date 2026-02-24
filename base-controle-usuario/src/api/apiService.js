@@ -1,5 +1,6 @@
 import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
+import { api } from './api';
 
 export async function saveTokens(access) {
   await SecureStore.setItemAsync('access_token', access);
@@ -28,7 +29,7 @@ export function obterMensagemErro(error) {
 
         return 'Email ou senha invalido!';
       case 403:
-        return 'Sem permissão';
+        return 'Usuário sem permissão para essa ação';
       case 500:
         return 'Erro interno do servidor';
     }
@@ -37,4 +38,44 @@ export function obterMensagemErro(error) {
   }
 
 
+}
+
+
+export async function getPermissions() {
+
+  const response = await api.get('/permissions');
+  return response.data;
+}
+
+export async function getPermissionsUser(userId) {
+
+  const response = await api.get('/permissions/' + userId);
+
+  return response.data;
+}
+
+
+export async function createUser(data) {
+
+  const response = await api.post('/users', data);
+
+  return response.data;
+}
+
+export async function updateUser(id, data) {
+  const response = await api.put('/users/' + id, data);
+
+  return response.data;
+}
+
+export async function getUsers() {
+
+  const response = await api.get('/users');
+  return response.data;
+}
+
+export async function deleteUser(id) {
+
+  const response = await api.delete('/users/' + id);
+  return response.data;
 }

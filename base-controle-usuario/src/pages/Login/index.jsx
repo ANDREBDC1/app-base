@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { ActivityIndicator, Alert, Platform, Text, Keyboard, KeyboardAvoidingView } from 'react-native';
-import { useNavigation } from "@react-navigation/native";
+import { useState, useContext} from 'react';
+import { ActivityIndicator, Alert, Platform, KeyboardAvoidingView } from 'react-native';
 import { AuthContext } from '../../contexts/auth';
 
 import {
@@ -15,34 +14,15 @@ import Titulo from '../../components/Titulo';
 
 export default function Login() {
 
-  const { loadingAuth, signIn, signUp } = useContext(AuthContext);
+  const { loadingAuth, signIn } = useContext(AuthContext);
 
-  const [login, setLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [nome, setNome] = useState('');
-  const [keyboardVisible, setKeyboardVisible] = useState(false);
-  const navigation = useNavigation();
 
-  useEffect(() => {
-    Keyboard.addListener(
-      'keyboardDidShow',
-      () => {
-        setKeyboardVisible(true); // Quando o teclado aparece
-      }
-    );
-    Keyboard.addListener(
-      'keyboardDidHide',
-      () => {
-        setKeyboardVisible(false); // Quando o teclado desaparece
-      }
-    );
-
-  }, []);
-
+  
   async function handleLogin() {
     if (!email || !password) {
-      Alert.alert("Digite um email e senha")
+      Alert.alert("Erro", "Digite um email e senha")
       return;
     }
 

@@ -56,4 +56,8 @@ margin-right: 8px;
 margin-top: 15px;
 `
 
+export const AreaSelect = styled.View`
+margin: 10px;
+`
+
 
