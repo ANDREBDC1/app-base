@@ -4,7 +4,7 @@ import { PermissionDto } from './dto/permisson.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Permission } from './permission.entity';
 import { In, Repository } from 'typeorm';
-import { User } from 'src/user/user.entity';
+import { User } from '../user/user.entity';
 
 @Injectable()
 export class PermissionsService {
