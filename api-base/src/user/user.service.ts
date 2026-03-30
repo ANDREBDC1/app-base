@@ -9,7 +9,7 @@ import { Repository, Not } from 'typeorm';
 
 import { User } from './user.entity';
 import { UserDto } from './dto/user.dto';
-import { PermissionsService } from 'src/security/permissions.service';
+import { PermissionsService } from '../security/permissions.service';
 import { hash } from '../commun/hashString';
 import { UserUpdateDto } from './dto/userUpdate.dto';
 

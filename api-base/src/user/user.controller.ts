@@ -12,7 +12,7 @@ import {
 import { UsersService } from './user.service';
 import { UserDto }  from './dto/user.dto';
 import { PermissionsGuard } from 'src/security/permissions.guard';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Permissions } from "../security/permissions.decorator"
 import  { 
   PermissionAdmin,
