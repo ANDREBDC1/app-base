@@ -1,5 +1,5 @@
 import { IsEmail, IsOptional, IsString, MinLength, IsNotEmpty } from 'class-validator';
-import { PermissionDto } from 'src/security/dto/permisson.dto';
+import { PermissionDto } from '../../security/dto/permisson.dto';
 
 export class UserUpdateDto {
     

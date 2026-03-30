@@ -3,7 +3,7 @@ import { PermissionsService } from './permissions.service';
 import { PermissionsGuard } from './permissions.guard';
 import { Permissions } from "./permissions.decorator"
 import { PermissionDto } from './dto/permisson.dto';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { 
     PermissionAdmin,
     PermissionUserCreate,
