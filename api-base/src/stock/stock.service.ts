@@ -13,7 +13,7 @@ export class StockService {
   ) {}
 
   async createProduct(dto: CreateProductDto) {
-    const product = this.products.create({ ...dto, quantity: 0 });
+    const product = this.products.create({ ...dto });
     return this.products.save(product);
   }
 
@@ -38,7 +38,6 @@ export class StockService {
     }
 
     if (amount > product.quantity) {
-        console.error(`Attempt to remove ${amount} from product ${productId} with only ${product.quantity} in stock`);
       throw new Error('Insufficient stock');
     }
 

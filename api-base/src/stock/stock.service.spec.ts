@@ -35,6 +35,7 @@ describe('StockService', () => {
   });
 
   it('should remove stock from a product', async () => {
+    
     const product = await service.createProduct({name: 'Produto A', price: 10.99} as any);
     await service.addStock(product.id, 10);
 
