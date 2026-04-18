@@ -4,7 +4,7 @@ export class CriarCampoTabelaUser1770233924191 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
-        queryRunner.addColumns("users", [
+        await queryRunner.addColumns("users", [
             new TableColumn({
                 name: 'isAdmin',
                 type: 'boolean',
@@ -17,7 +17,7 @@ export class CriarCampoTabelaUser1770233924191 implements MigrationInterface {
                 type: 'varchar',
                 isNullable: true,  // sempre criar um novo campo com esse cara true
             })
-        ])
+        ]);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

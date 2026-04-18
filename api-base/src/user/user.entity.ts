@@ -14,7 +14,7 @@ export class User {
   id: string;
   
   @Column({ nullable: true })
-  name: string
+  name: string;
 
   @Column({ unique: true })
   email: string;
@@ -30,7 +30,7 @@ export class User {
   @Column( {
     default: false
   })
-  isAdmin: boolean
+  isAdmin: boolean;
 
   @CreateDateColumn()
   createdAt: Date;

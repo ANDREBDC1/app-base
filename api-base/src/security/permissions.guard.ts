@@ -34,6 +34,12 @@ export class PermissionsGuard implements CanActivate {
   
       const userId = request.user.id;
 
+      // Check if user is admin
+      const user = await this.permisionsService.getUserById(userId);
+      if (user?.isAdmin) {
+        return true;
+      }
+
       const countPermissions = await this.permisionsService.validatePermissions(userId, requiredPermissions);
 
       if (countPermissions > 0) {

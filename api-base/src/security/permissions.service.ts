@@ -93,5 +93,9 @@ export class PermissionsService {
 
     async removeByUserId(userId: string) {
         await this.permissionRepository.delete({ userId });
-    } 
+    }
+
+    async getUserById(userId: string): Promise<User | null> {
+        return this.userRepository.findOneBy({ id: userId });
+    }
 }

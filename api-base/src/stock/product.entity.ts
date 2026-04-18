@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Batch } from './batch.entity';
 
 @Entity('products')
 export class Product {
@@ -32,6 +33,9 @@ export class Product {
   @Column({ nullable: true })
   qrCode: string;
 
-  @Column({ default: 0 })
-  quantity: number;
+  @OneToMany(() => Batch, (batch) => batch.product, {
+    cascade: true,
+    eager: true,
+  })
+  batches: Batch[];
 }

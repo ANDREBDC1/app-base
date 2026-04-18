@@ -7,6 +7,7 @@ import { PermissionsModule } from "./security/permissions.module"
 import { UsersModule } from './user/user.module'
 import { dataSourceOptions } from "./database/data-source"
 import { StockModule } from './stock/stock.module';
+import { UploadModule } from './upload/upload.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { StockModule } from './stock/stock.module';
     AuthModule,
     PermissionsModule,
     UsersModule,
-    StockModule],
+    StockModule,
+    UploadModule],
   controllers: [AppController],
   providers: [AppService],
 })
